@@ -1,0 +1,19 @@
+[Desktop Entry]
+Name=CPU temperature meter
+Comment=CPU temperature meter
+Type=Service
+ServiceTypes=Plasma/Applet,Plasma/PopupApplet
+Icon=utilities-system-monitor
+
+X-Plasma-API=declarativeappletscript
+X-Plasma-MainScript=ui/main.qml
+X-Plasma-RequiredExtensions=LocalIO
+X-KDE-PluginInfo-Author=Gonzalo Exequiel Pedone
+X-KDE-PluginInfo-Email=hipersayan.x@gmail.com
+X-KDE-PluginInfo-Name=cpu-temperature-meter
+X-KDE-PluginInfo-Version=1.0.0
+X-KDE-PluginInfo-Website=http://hipersayanx.blogspot.com/
+X-KDE-PluginInfo-Category=System Information
+X-KDE-PluginInfo-Depends=
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-EnabledByDefault=true
