@@ -32,6 +32,8 @@ Item
         font.pointSize: theme.desktopFont.pointSize
         font.bold: true
 
+        anchors.centerIn: parent
+
         property real temperature: 0
         property real overheatLevel: 80
         property color overheatColor: Qt.rgba(1, 0, 0, 1)
