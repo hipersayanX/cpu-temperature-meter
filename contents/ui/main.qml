@@ -39,35 +39,15 @@ Item
         property color overheatColor: Qt.rgba(1, 0, 0, 1)
     }
 
-    Timer
+    PlasmaCore.DataSource
     {
-        id: tmrTemperature
-        running: true
-        repeat: true
+        id: temperatureData
+        engine: "systemmonitor"
+        connectedSources: ["acpi/Thermal_Zone/0/Temperature"]
         interval: 500
 
-        property string temperature: ""
-
-        onTriggered:
-        {
-            tmrTemperature.temperature = ""
-            // /sys/bus/platform/devices/coretemp.0/temp2_input     ex: 47000
-            // /sys/bus/acpi/devices/LNXTHERM:00/thermal_zone/temp  ex: 47000
-            var temperatureRead = plasmoid.getUrl("/sys/class/thermal/thermal_zone0/temp");
-
-            temperatureRead.data.connect(readTemperature);
-            temperatureRead.finished.connect(readTemperatureFinished);
-        }
-
-        function readTemperature(job, data)
-        {
-            if (data.length)
-                tmrTemperature.temperature += data.toUtf8()
-        }
-
-        function readTemperatureFinished(job)
-        {
-            txtTemperature.temperature = parseInt(tmrTemperature.temperature, 10) / 1e3
+        onNewData:{
+            txtTemperature.temperature = data.value
             txtTemperature.color = txtTemperature.temperature >= txtTemperature.overheatLevel? txtTemperature.overheatColor: theme.textColor
         }
     }
